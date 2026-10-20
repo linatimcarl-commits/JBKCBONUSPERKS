@@ -2431,7 +2431,7 @@ select{
         <div class="receipt-row"><span>Pax Equivalent</span><strong id="receiptEquivalent">0.00</strong></div>
         <div class="receipt-row"><span>Final Pax</span><strong id="receiptFinalPax">0.00</strong></div>
         <div class="receipt-row"><span>Base Food Value</span><strong id="receiptBaseFood">₱0.00</strong></div>
-        <div class="receipt-row"><span>10% Food Opportunity</span><strong id="receiptTenPercent">₱0.00</strong></div>
+        <div class="receipt-row"><span>GC Amount (10% of Base Food Value)</span><strong id="receiptTenPercent">0.00</strong></div>
         <div class="receipt-row"><span>Total Sales Opportunity</span><strong id="receiptTotalOpportunity">₱0.00</strong></div>
         <div class="receipt-row"><span>Opportunity Rate</span><strong id="receiptRate">0.00%</strong></div>
     </div>
@@ -2581,7 +2581,7 @@ select{
         <div class="kpi kpi-yellow">
 
             <div class="kpi-label">
-                AMOUNT TO ADD
+                BONUS PERKS
             </div>
 
             <div
@@ -2688,7 +2688,7 @@ select{
             </div>
 
             <div class="flow-title">
-                DESIRED AMOUNT
+                LESS AMOUNT
             </div>
 
             <div
@@ -2714,7 +2714,7 @@ select{
             </div>
 
             <div class="flow-title">
-                AMOUNT TO ADD
+                BONUS PERKS
             </div>
 
             <div
@@ -2743,7 +2743,7 @@ select{
             </div>
 
             <div class="flow-title">
-                AMOUNT TO ADD
+                BONUS PERKS
             </div>
 
             <div
@@ -2953,13 +2953,13 @@ select{
 
                         <th>FOOD AMOUNT</th>
 
-                        <th>AMOUNT ADDED</th>
+                        <th>BONUS PERKS</th>
 
                         <th>PAX EQUIVALENT</th>
 
                         <th>FINAL PAX</th>
 
-                        <th>10% FOOD OPPORTUNITY</th>
+                        <th>GC (10%)</th>
 
                         <th>TOTAL OPPORTUNITY</th>
 
@@ -3080,7 +3080,7 @@ select{
                     <td>
 
                         <strong>
-                            10% FOOD OPPORTUNITY
+                            GC (10%)
                         </strong>
 
                     </td>
@@ -3098,7 +3098,7 @@ select{
                     </td>
 
                     <td>
-                        Base Food Value × 10%
+                        GC Amount = Base Food Value × 10%
                     </td>
 
                 </tr>
@@ -3109,7 +3109,7 @@ select{
                     <td>
 
                         <strong>
-                            AMOUNT ADDED
+                            BONUS PERKS
                         </strong>
 
                     </td>
@@ -3127,7 +3127,7 @@ select{
                     </td>
 
                     <td>
-                        Each opportunity: No. of Pax × Desired Amount
+                        Each opportunity: No. of Pax × Less Amount per Pax
                     </td>
 
                 </tr>
@@ -3156,7 +3156,7 @@ select{
                     </td>
 
                     <td>
-                        Combined Amount Added + 10% Food Opportunity
+                        Bonus Perks + GC value
                     </td>
 
                 </tr>
@@ -3234,7 +3234,7 @@ select{
                 02
             </span>
 
-            Base Food Value × 10%
+            GC Amount = Base Food Value × 10%
 
             = 10% Food Opportunity
 
@@ -3247,7 +3247,7 @@ select{
                 03
             </span>
 
-            Combined Amount Added + 10% Food Opportunity
+            Bonus Perks + GC value
 
             = Total Sales Opportunity
 
@@ -3407,7 +3407,7 @@ select{
                 01
             </span>
 
-            Each opportunity: No. of Pax × Desired Amount
+            Each opportunity: No. of Pax × Less Amount per Pax
 
             = Amount to Add
 
@@ -3817,7 +3817,7 @@ function opportunityTemplate(id){
 
                     <div class="opportunity-input-card-subtitle">
 
-                        Enter pax, desired amount per pax and food amount
+                        Enter pax, less amount per pax and food amount
 
                     </div>
 
@@ -3862,13 +3862,13 @@ function opportunityTemplate(id){
 
 
                 <!-- =================================================
-                     DESIRED AMOUNT
+                     LESS AMOUNT
                 ================================================== -->
 
                 <div class="input-box money">
 
                     <label>
-                        DESIRED AMOUNT TO ADD / PAX
+                        LESS AMOUNT / PAX
                     </label>
 
 
@@ -4056,7 +4056,7 @@ function removeOpportunity(id){
 
 
 /* =========================================================
-   DESIRED AMOUNT QUICK BUTTON
+   LESS AMOUNT QUICK BUTTON
 ========================================================= */
 
 function setOpportunityAmount(
@@ -4550,9 +4550,7 @@ function calculateAll(){
                     </td>
 
                     <td class="money">
-                        ${peso(
-                            op.tenPercentOpportunity
-                        )}
+                        ${num(op.tenPercentOpportunity)}
                     </td>
 
                     <td class="money">
@@ -4615,9 +4613,7 @@ function calculateAll(){
                 </td>
 
                 <td class="money">
-                    ${peso(
-                        totalTenPercentOpportunity
-                    )}
+                    ${peso(totalTenPercentOpportunity)}
                 </td>
 
                 <td class="money">
@@ -4703,9 +4699,7 @@ function calculateAll(){
     document.getElementById(
         "opTenPercent"
     ).textContent =
-        peso(
-            totalTenPercentOpportunity
-        );
+        num(totalTenPercentOpportunity);
 
 
     document.getElementById(
